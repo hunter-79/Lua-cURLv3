@@ -230,6 +230,7 @@ static int push_upper(lua_State *L, const char *str){
   size_t i, n = strlen(str);
   char *ptr = (n < sizeof(buffer))?&buffer[0]:malloc(n + 1);
   if (!ptr) return 1;
+  *ptr = 0; //init to empty string
   for(i = 0; i < n; ++i){
     if( (str[i] > 96 ) && (str[i] < 123) ) ptr[i] = str[i] - 'a' + 'A';
     else ptr[i] = str[i];
